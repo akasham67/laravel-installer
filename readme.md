@@ -1,3 +1,9 @@
+
+[![Latest Stable Version](https://poser.pugx.org/shamim/laravel-installer/v/stable)](https://packagist.org/packages/shamim/laravel-installer?format=flat-square)
+[![License](https://poser.pugx.org/shamim/laravel-installer/license)](https://packagist.org/packages/shamim/laravel-installer?format=flat-square)
+[![GitHub issues](https://img.shields.io/github/issues/akasham67/laravel-installer.svg?style=flat-square)](https://github.com/akasham67/laravel-installer/issues)
+[![GitHub stars](https://img.shields.io/github/stars/akasham67/laravel-installer.svg?style=flat-square)](https://github.com/akasham67/laravel-installer/stargazers)
+
 # Ultimate SMS Auto Installer
 
 Ultimate SMS Auto Installer checks for the following things and install the application in one go.
