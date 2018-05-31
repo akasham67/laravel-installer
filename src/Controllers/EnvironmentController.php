@@ -23,6 +23,7 @@ class EnvironmentController extends Controller
      */
     public function __construct(EnvironmentManager $environmentManager)
     {
+        $this->middleware('checkDemo');
         $this->environmentManager = $environmentManager;
     }
 

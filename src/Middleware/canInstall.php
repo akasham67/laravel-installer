@@ -25,6 +25,13 @@ class canInstall
         if($this->alreadyInstalled()) {
             abort(404);
         }
+
+        if (env('APP_STAGE') == 'Demo'){
+            return redirect('admin')->with([
+                'message' => 'Invalid Access',
+                'message_important' => true
+            ]);
+        }
         
         return $next($request);
     }

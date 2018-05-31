@@ -6,6 +6,11 @@ use Illuminate\Routing\Controller;
 
 class WelcomeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkDemo');
+    }
     /**
      * Display the installer welcome page.
      *

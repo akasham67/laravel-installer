@@ -11,6 +11,11 @@ use Shamim\LaravelInstaller\Helpers\InstalledFileManager;
 
 class FinalController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkDemo');
+    }
     /**
      * Update installed file and display finished view.
      *

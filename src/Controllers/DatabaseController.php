@@ -18,6 +18,7 @@ class DatabaseController extends Controller
      */
     public function __construct(DatabaseManager $databaseManager)
     {
+        $this->middleware('checkDemo');
         $this->databaseManager = $databaseManager;
     }
 

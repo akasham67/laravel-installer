@@ -20,6 +20,7 @@ class PermissionsController extends Controller
     public function __construct(PermissionsChecker $checker)
     {
         $this->permissions = $checker;
+        $this->middleware('checkDemo');
     }
 
     /**

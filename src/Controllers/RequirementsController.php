@@ -19,6 +19,7 @@ class RequirementsController extends Controller
     public function __construct(RequirementsChecker $checker)
     {
         $this->requirements = $checker;
+        $this->middleware('checkDemo');
     }
 
     /**
