@@ -45,7 +45,7 @@ class EnvironmentController extends Controller
      */
     public function save(UpdateRequest $request)
     {
-        if (env('DB_DATABASE')){
+        if (env('APP_TYPE') != 'new'){
             return redirect('/')->with([
                 'message'=> language_data('Invalid access'),
                 'message_important' => true

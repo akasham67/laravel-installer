@@ -39,7 +39,7 @@ class FinalController extends Controller
 
     public function save(SetupRequest $request)
     {
-        if (env('DB_DATABASE')){
+        if (env('APP_TYPE') != 'new'){
             return redirect('/')->with([
                 'message'=> language_data('Invalid access'),
                 'message_important' => true
@@ -60,7 +60,27 @@ class FinalController extends Controller
                 'email' => $request->system_email
             ]);
 
-            return Reply::redirect(route('LaravelInstaller::final'), 'Application Installed Perfectly.');
+
+            $timeZoneSetting = "\n" .
+                'APP_TYPE=installed'.
+                "\n";
+            // @ignoreCodingStandard
+            $env = file_get_contents(base_path('.env'));
+            $rows = explode("\n", $env);
+            $unwanted = "APP_TYPE";
+            $cleanArray = preg_grep("/$unwanted/i", $rows, PREG_GREP_INVERT);
+
+            $cleanString = implode("\n", $cleanArray);
+            $env = $cleanString . $timeZoneSetting;
+
+            try {
+                file_put_contents(base_path('.env'), $env);
+                
+                return Reply::redirect(route('LaravelInstaller::final'), 'Application Installed Perfectly.');
+
+            } catch (\Exception $e) {
+                return Reply::error('Something went wrong. Please try again');
+            }
 
         }else{
             return Reply::error('Something went wrong. Please try again');

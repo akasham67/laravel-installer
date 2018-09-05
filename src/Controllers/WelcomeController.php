@@ -20,7 +20,7 @@ class WelcomeController extends Controller
     public function welcome()
     {
 
-       if (env('DB_DATABASE')){
+       if (env('APP_TYPE') != 'new'){
             return redirect('/')->with([
                 'message'=> language_data('Invalid access'),
                 'message_important' => true
