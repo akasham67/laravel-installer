@@ -30,6 +30,13 @@ class PermissionsController extends Controller
      */
     public function permissions()
     {
+        if (env('DB_DATABASE')){
+            return redirect('/')->with([
+                'message'=> language_data('Invalid access'),
+                'message_important' => true
+            ]);
+        }
+
         $permissions = $this->permissions->check(
             config('installer.permissions')
         );

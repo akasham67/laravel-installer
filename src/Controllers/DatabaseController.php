@@ -29,6 +29,13 @@ class DatabaseController extends Controller
      */
     public function database()
     {
+        if (env('DB_DATABASE')){
+            return redirect('/')->with([
+                'message'=> language_data('Invalid access'),
+                'message_important' => true
+            ]);
+        }
+
         $response = $this->databaseManager->migrateAndSeed();
 
         return redirect()->route('LaravelInstaller::setup')

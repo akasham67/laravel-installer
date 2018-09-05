@@ -39,6 +39,13 @@ class FinalController extends Controller
 
     public function save(SetupRequest $request)
     {
+        if (env('DB_DATABASE')){
+            return redirect('/')->with([
+                'message'=> language_data('Invalid access'),
+                'message_important' => true
+            ]);
+        }
+
         $message = Admin::where('username','admin')->update([
             'password' => bcrypt($request->password)
         ]);

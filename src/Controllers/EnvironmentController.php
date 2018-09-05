@@ -45,6 +45,12 @@ class EnvironmentController extends Controller
      */
     public function save(UpdateRequest $request)
     {
+        if (env('DB_DATABASE')){
+            return redirect('/')->with([
+                'message'=> language_data('Invalid access'),
+                'message_important' => true
+            ]);
+        }
 
         $message = $this->environmentManager->saveFile($request);
         return $message;
